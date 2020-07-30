@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "./../Burger/Burger.module.css";
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
-import { array } from "prop-types";
 const burger = (props) => {
   let targetIngredients =
     //Fetching the ingredients as keys Array
@@ -14,8 +13,8 @@ const burger = (props) => {
           return <BurgerIngredient key={igKey + i} type={igKey} />;
         });
       })
-      .reduce((array, el) => {
-        return array.concat(el);
+      .reduce((arr, el) => {
+        return arr.concat(el);
       }, []);
   if (targetIngredients.length === 0) {
     targetIngredients = <p>Please select ingredients!!!</p>;
