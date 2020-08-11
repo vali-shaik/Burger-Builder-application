@@ -19,7 +19,6 @@ const burger = (props) => {
   if (targetIngredients.length === 0) {
     targetIngredients = <p>Please select ingredients!!!</p>;
   }
-  console.log("Target ingredients : ", targetIngredients);
 
   return (
     <div className={classes.Burger}>

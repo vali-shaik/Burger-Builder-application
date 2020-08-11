@@ -4,6 +4,8 @@ import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Modal from "./../../components/UI/Modal/Modal";
 import OrderSummary from "./../../components/Burger/OrderSummary/OrderSummary";
+//import { Modal } from "react-bootstrap";
+
 const INGREDIENTS_PRICE = { salad: 0.5, meat: 1.8, cheese: 0.9, bacon: 1.9 };
 
 class BurgerBuilder extends Component {
@@ -16,8 +18,12 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 4,
     purchasable: false,
+    purchasing: false,
   };
 
+  purchasingHander = () => {
+    this.setState({ purchasing: true });
+  };
   updatePurchasable = (ingredients) => {
     const sum = Object.keys(ingredients)
       .map((igKey) => {
@@ -78,9 +84,11 @@ class BurgerBuilder extends Component {
     }
     return (
       <Aux>
-        <Modal>
-          <OrderSummary ingredients={this.state.ingredients} />
-        </Modal>
+        {
+          <Modal show={this.state.purchasing}>
+            <OrderSummary ingredients={this.state.ingredients} />
+          </Modal>
+        }
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
           totalPrice={this.state.totalPrice}
@@ -88,6 +96,7 @@ class BurgerBuilder extends Component {
           removed={this.removeIngredient}
           disabledInfo={disabledInfo}
           purchasable={this.state.purchasable}
+          ordered={this.purchasingHander}
         />
       </Aux>
     );

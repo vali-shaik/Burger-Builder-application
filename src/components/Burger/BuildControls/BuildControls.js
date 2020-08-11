@@ -9,6 +9,22 @@ const controls = [
   { label: "Bacon", type: "bacon" },
 ];
 
+// const orderModal = () => {
+//   return (
+//     <div className="container">
+//       <Modal show={true} onHide={true}>
+//         <Modal.Header closeButton>
+//           <Modal.Title>Login</Modal.Title>
+//         </Modal.Header>
+//         <Modal.Body>
+//           <orderSummary />
+//         </Modal.Body>
+//         <Modal.Footer></Modal.Footer>
+//       </Modal>
+//     </div>
+//   );
+// };
+
 const buildControls = (props) => {
   return (
     <div className={classes.BuildControls}>
@@ -30,7 +46,11 @@ const buildControls = (props) => {
           />
         );
       })}
-      <button className={classes.OrderButton} disabled={!props.purchasable}>
+      <button
+        className={classes.OrderButton}
+        disabled={!props.purchasable}
+        onClick={props.ordered}
+      >
         ORDER NOW
       </button>
     </div>

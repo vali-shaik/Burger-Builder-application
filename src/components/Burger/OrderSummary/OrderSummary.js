@@ -16,6 +16,7 @@ const orderSummary = (props) => {
     <Aux>
       <h3>Your order summary:</h3>
       <ul>{ingredientSummary}</ul>
+      <a href="www.google.com">Continue to checkout!!</a>
     </Aux>
   );
 };
